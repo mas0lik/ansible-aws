@@ -69,13 +69,13 @@
         exact_count: 1
         assign_public_ip: yes
       with_items: ['staging', 'production']
-      register: ec2_instances
+      register: ec2
 
     - name: Add new instance to host group
       add_host:
         name: "{{ item.public_ip }}"
         groups: "{{ count_tag }}"
-      loop: "{{ ec2_instances }}"
+      with_items: "{{ ec2.instances }}"
 
     - meta: refresh_inventory
 
@@ -84,4 +84,4 @@
         region: "{{ region }}"
         instance_ids: "{{ item }}"
         state: running
-      with_items: "{{ ec2_instances }}"
+      with_items: "{{ ec2.instances }}"
