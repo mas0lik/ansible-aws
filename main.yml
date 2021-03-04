@@ -73,7 +73,7 @@
 
     - name: Add new instance to host group
       add_host:
-        groupname: "{{ count_tag }}"
+        groupname: srv1
         hostname: "{{ item.public_ip }}"
       loop: "{{ ec2.instances }}"
 
@@ -84,4 +84,4 @@
         region: "{{ region }}"
         instance_ids: "{{ item }}"
         state: running
-      with_items: "{{ ec2_instances }}"
+      with_items: "{{ ec2.instances }}"
