@@ -89,8 +89,8 @@
     - meta: refresh_inventory
 
     - name: Ensure EC2 instances are up and running
-        ec2:
-          region: "{{ region }}"
-          instance_ids: "{{ item }}"
-          state: 'running'
-        with_items: "{{ ec2.instances }}"
+      ec2:
+        region: "{{ region }}"
+        instance_ids: "{{ item }}"
+        state: 'running'
+      with_items: "{{ ec2.instances }}"
