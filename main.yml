@@ -69,7 +69,7 @@
         exact_count: 1
         assign_public_ip: yes
       with_items: ['staging', 'production']
-      register: ec2
+      register: ec2_instances
 
     - name: Add new instance to host group
       add_host:
