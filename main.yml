@@ -60,7 +60,7 @@
         instance_type: "{{ instance_type }}"
         image: "{{ ami_id }}"
         vpc_subnet_id: "{{ random_subnet }}"
-        group: "sg-{{ instance_name }}"
+        group: "{{ instance_name }}"
         wait: yes
         instance_tags:
           Name: "inst-{{ item }}"
