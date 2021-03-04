@@ -76,8 +76,8 @@
     - name: Add new instance to host group
       add_host:
         name: "{{ item.public_ip }}"
-        groups: "{{ count_tag }}"
-      loop: "{{ ec2.item }}"
+        groups: "{{ item.count_tag_Name }}"
+      loop: "{{ ec2.results }}"
 
     - meta: refresh_inventory
 
