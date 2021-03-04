@@ -40,7 +40,7 @@
 
     - name: Create EC2 VPC default security group for Staging and Production instances
       ec2_group:
-        name: "sg-{{ instance_name }}"
+        name: "{{ instance_name }}"
         description: Security Group for {{ instance_name }}
         vpc_id: "{{ vpc_id }}"
         region: "{{ region_name }}"
