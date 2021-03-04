@@ -73,7 +73,7 @@
 
     - name: Add new instance to host group
       add_host:
-        groupname: "{{ ec2_tag_Name }}"
+        groupname: "{{ count_tag }}"
         hostname: "{{ item.public_ip }}"
       loop: "{{ ec2.instances }}"
 
