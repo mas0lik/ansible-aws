@@ -54,7 +54,7 @@
       register: security_group
 
     - name: Create two EC2 instances
-      ec2_instance:
+      ec2:
         key_name: "{{ key_name }}"
         region: "{{ region_name }}"
         instance_type: "{{ instance_type }}"
@@ -75,7 +75,7 @@
       add_host:
         name: "{{ item.public_ip }}"
         groups: "{{ count_tag }}"
-      loop: "{{ ec2.instance }}"
+      loop: "{{ ec2 }}"
 
     - meta: refresh_inventory
 
