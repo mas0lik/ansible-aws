@@ -68,8 +68,8 @@
           Name: "inst-{{ item }}"
         exact_count: 1
         assign_public_ip: yes
-      with_items: ['staging', 'production']
       register: ec2
+      with_items: ['staging', 'production']
     - debug:
         var: ec2.results
 
