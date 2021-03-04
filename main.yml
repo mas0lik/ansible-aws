@@ -75,7 +75,7 @@
       add_host:
         groupname: "{{ count_tag }}"
         hostname: "{{ item.public_ip }}"
-      loop: "{{ ec2_instances }}"
+      loop: "{{ ec2_instance }}"
 
     - meta: refresh_inventory
 
@@ -84,4 +84,4 @@
         region: "{{ region }}"
         instance_ids: "{{ item }}"
         state: running
-      with_items: "{{ ec2_instances }}"
+      with_items: "{{ ec2_instance }}"
