@@ -14,8 +14,8 @@
       register: ec2_key
 
     - name: Save private key
-        copy: content="{{ ec2_key.key.private_key }}" dest="./keys/{{ key_name }}.pem" mode=0600
-        when: ec2_key.changed
+      copy: content="{{ ec2_key.key.private_key }}" dest="./keys/{{ key_name }}.pem" mode=0600
+      when: ec2_key.changed
 
     - name: Create epmty S3 bucket for managing artifacts
       amazon.aws.s3_bucket:
