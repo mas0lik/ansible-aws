@@ -75,7 +75,7 @@
       add_host:
         groupname: "{{ ec2_tag_Name }}"
         hostname: "{{ item.public_ip }}"
-      loop: "{{ ec2_instances }}"
+      loop: "{{ ec2.instances }}"
 
     - meta: refresh_inventory
 
