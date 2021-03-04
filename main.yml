@@ -75,7 +75,7 @@
       add_host:
         name: "{{ item.public_ip }}"
         groups: "{{ count_tag }}"
-      loop: "{{ ec2.instances }}"
+      loop: "{{ ec2_instances }}"
 
     - meta: refresh_inventory
 
