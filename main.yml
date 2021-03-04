@@ -18,7 +18,7 @@
       when: ec2_key.changed
 
     - name: Create epmty S3 bucket for managing artifacts
-      amazon.aws.s3_bucket:
+      s3_bucket:
         name: "{{ s3_bucket_name }}"
         s3_url: "{{ s3_bucket_url }}"
         state: present
