@@ -70,12 +70,14 @@
         assign_public_ip: yes
       with_items: ['staging', 'production']
       register: ec2
+    - debug:
+        var: ec2.results
 
     - name: Add new instance to host group
       add_host:
         name: "{{ item.public_ip }}"
         groups: "{{ count_tag }}"
-      loop: "{{ ec2.tagged_instances }}"
+      loop: "{{ ec2results.tagged_instances }}"
 
     - meta: refresh_inventory
 
