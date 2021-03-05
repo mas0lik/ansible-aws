@@ -68,15 +68,15 @@
           Name: "inst-{{ item }}"
         exact_count: 1
         assign_public_ip: yes
-      register: ec2
+      register: ec2_results
       with_items: ['staging', 'production']
     - debug:
-        var: ec2.results
+        msg: "{{ ec2_result }}"
 
     - name: Add new instance to host group
       add_host:
-        name: "{{ item.tagged_instances.0.public_ip }}"
-        groups: "{{ item.tagged_instances.0.count_tag }}"
+        name: "{{ ec2_results | json_query('tagged_instances[*].public_ip' }}"
+        groups: "{{ ec2_results | json_query('tagged_instances[*].count_tag' }}"
       with_items:
         - staging
         - production
