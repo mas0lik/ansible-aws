@@ -73,7 +73,7 @@
     - debug:
         msg: "{{ ec2_results }}"
 
-    - name: debug
+    - debug:
         msg: "{{ ec2_results | json_query('tagged_instances[*].public_ip') }}"
 
     - name: Add new instance to host group
