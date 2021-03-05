@@ -75,8 +75,8 @@
 
     - name: Add new instance to host group 1
       add_host:
-        name: "{{ item.public_ip') }}"
-        groups: "{{ item.count_tag') }}"
+        name: "{{ item.public_ip }}"
+        groups: "{{ item.count_tag }}"
       with_items: "{{ ec2.results[0].tagged_instances }}"
         #- staging
         #- production
