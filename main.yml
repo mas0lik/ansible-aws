@@ -79,10 +79,22 @@
         groups: "{{ item.tags.Name }}"
       with_items: "{{ ec2.results[0].tagged_instances }}"
 
+    - debug:
+        msg: "{{ item.public_ip }}"
+        with_items: "{{ ec2.results[0].tagged_instances }}"
+
+    - debug:
+        msg: "{{ item.tags.Name }}"
+      with_items: "{{ ec2.results[0].tagged_instances }}"
+
     - name: Add new instance Production to host group
       add_host:
         name: "{{ item.public_ip }}"
         groups: production
+      with_items: "{{ ec2.results[1].instances }}"
+
+    - debug:
+        msg: "{{ item.public_ip }}"
       with_items: "{{ ec2.results[1].instances }}"
 
     - meta: refresh_inventory
