@@ -89,7 +89,7 @@
 
     - name: Ensure EC2 instances are up and running
       ec2:
-        region: "{{ region }}"
+        region: "{{ region_name }}"
         instance_ids: "inst-{{ item }}"
         state: running
       with_items:
