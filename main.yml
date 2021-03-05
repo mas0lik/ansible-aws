@@ -79,7 +79,7 @@
         #groups: "{{ item | json_query('tagged_instances[*].count_tag') }}"
       debug:
         msg: "{{ item }}"
-      with_items: "{{ ec2_results }}"
+      with_items: "{{ ec2_results.results }}"
         #- staging
         #- production
 
