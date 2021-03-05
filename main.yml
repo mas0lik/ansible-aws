@@ -71,7 +71,7 @@
       register: ec2_results
       with_items: ['staging', 'production']
     - debug:
-        msg: "{{ ec2_result }}"
+        msg: "{{ ec2_results }}"
 
     - name: Add new instance to host group
       add_host:
