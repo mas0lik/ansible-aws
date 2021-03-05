@@ -71,12 +71,12 @@
       register: ec2_results
       with_items: ['staging', 'production']
     - debug:
-        msg: "{{ ec2_results }}"
+        msg: "{{ ec2_results | from_json }}"
 
     - name: Add new instance to host group
       add_host:
         name: "{{ ec2_results | json_query('tagged_instances[*].public_ip') }}"
-        groups: "{{ ec2_results | json_query('tagged_instances[*].count_tag') }}"
+        groups: "{{ ec2_results | json_query('tagged_instances[*].tags.Name') }}"
       with_items:
         - staging
         - production
