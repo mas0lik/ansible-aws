@@ -90,6 +90,7 @@
 
 - name: Prepare Staging environment
   hosts: staging
+  remote_user: ubuntu
   become: yes
 
   tasks:
@@ -128,6 +129,7 @@
 
 - name: Prepare Production environment
   hosts: production
+  remote_user: ubuntu
   become: yes
 
   tasks:
