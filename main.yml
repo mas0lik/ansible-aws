@@ -77,18 +77,16 @@
     - name: Add new instance Staging to host group
       add_host:
         name: "{{ item.public_ip }}"
-        groups: staging
+        groups: "{{ item.tags.Name }}"
         ansible_ssh_private_key_file: ./keys/{{ key_name }}.pem
       with_items: "{{ ec2.results[0].instances }}"
 
     - name: Add new instance Production to host group
       add_host:
         name: "{{ item.public_ip }}"
-        groups: production
+        groups: "{{ item.tags.Name }}"
         ansible_ssh_private_key_file: ./keys/{{ key_name }}.pem
       with_items: "{{ ec2.results[1].instances }}"
-
-    - meta: refresh_inventory
 
 - name: Prepare Staging environment
   hosts: staging
