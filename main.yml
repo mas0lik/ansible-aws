@@ -74,9 +74,9 @@
         var: ec2_results
 
     - name: Add new instance to host group
-      add_host:
-        name: "{{ item | json_query('tagged_instances[*].public_ip') }}"
-        groups: "{{ item | json_query('tagged_instances[*].count_tag') }}"
+      #add_host:
+        #name: "{{ item | json_query('tagged_instances[*].public_ip') }}"
+        #groups: "{{ item | json_query('tagged_instances[*].count_tag') }}"
       debug:
         msg: "{{ item }}"
       with_items:
