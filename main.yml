@@ -73,20 +73,17 @@
     - debug:
         var: ec2.results
 
-    - name: Add new instance to host group 1
+    - name: Add new instance Staging to host group
       add_host:
         name: "{{ item.public_ip }}"
         groups: "{{ item.tags.Name }}"
       with_items: "{{ ec2.results[0].tagged_instances }}"
-        #- staging
-        #- production
-    - name: Add new instance to host group
+
+    - name: Add new instance Production to host group
       add_host:
-        name: "{{ item | json_query('tagged_instances..public_ip') }}"
-        groups: "{{ item | json_query('tagged_instances.0.count_tag') }}"
-      with_items: "{{ ec2.results }}"
-        #- staging
-        #- production
+        name: "{{ item.public_ip_address }}"
+        groups: production
+      with_items: "{{ ec2.results[1].instances }}"
 
     - meta: refresh_inventory
 
