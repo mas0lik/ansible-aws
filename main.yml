@@ -77,7 +77,9 @@
       add_host:
         name: "{{ item.public_ip }}"
         groups: "{{ item.count_tag_Name }}"
-      with_items: "{{ ???????? }}"
+      with_items:
+        - staging
+        - production
 
     - meta: refresh_inventory
 
