@@ -1,5 +1,5 @@
 ---
-key_name: mas0lik02
+key_name: mas0lik03
 region_name: us-east-2
 s3_bucket_name: boxfuse.mas0lik.dz
 instance_name: aws-inst-dz13
